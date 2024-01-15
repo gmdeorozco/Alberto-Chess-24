@@ -32,7 +32,7 @@ def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state) -> 
     for i in range(len(simple_wp)-1,-1,-1):
         if (
             any (simple_wp[i] & all_occupied) 
-            | obstacled_col_white_pawn(white_occupied, black_occupied, origin_bit, simple_wp[i], color=True )
+            | obstacled_col(white_occupied, black_occupied, origin_bit, simple_wp[i], color=True )
             ):
             simple_wp.remove( simple_wp[i]  )
     
@@ -60,14 +60,14 @@ def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state) -> 
     for i in range(len(simple_wp)-1,-1,-1):
         if (
             any (simple_wp[i] & all_occupied) 
-            | obstacled_col_white_pawn(black_occupied, white_occupied, origin_bit, simple_wp[i],color=False )
+            | obstacled_col(black_occupied, white_occupied, origin_bit, simple_wp[i],color=False )
             ):
             simple_wp.remove( simple_wp[i]  )
     
     return simple_wp
     
     
-def obstacled_col_white_pawn(friends_occupied_bits, enemy_occupied_bits, origin, target, color):
+def obstacled_col(friends_occupied_bits, enemy_occupied_bits, origin, target, color):
 
     obstacled_cells = friends_occupied_bits | enemy_occupied_bits
     ind_col, col = get_col(origin | target)
