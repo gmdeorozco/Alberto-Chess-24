@@ -1,0 +1,1 @@
+from move_solver.move_solver_unit import get_possible_moves_for_white_pawn
