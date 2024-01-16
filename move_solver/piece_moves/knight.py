@@ -11,14 +11,14 @@ simple_knight = knight_pre.get_knight_precalculated()
  
 def get_possible_moves_for_knight(origin_bit:bitarray, state:game_state, color:bool) -> bitarray:
     """
-    Calculate possible moves for a white pawn based on the origin bitarray and the current board.
+    Calculate possible moves for a knight based on the origin bitarray and the current board.
 
     Parameters:
-    - origin_bit: The bitarray representing the position of the pawn.
+    - origin_bit: The bitarray representing the position of the knight.
     - board: The current state of the chessboard.
 
     Returns:
-    - A list bitarrays representing possible moves for the white pawn.
+    - A list bitarrays representing possible moves for the knight.
     """
     white_occupied = occupied( state.white_pieces )
     black_occupied = occupied( state.black_pieces )
@@ -29,11 +29,11 @@ def get_possible_moves_for_knight(origin_bit:bitarray, state:game_state, color:b
     
     if color:
         for i in range(len(simple_wp)-1,-1,-1):
-            if any (simple_wp[i] & white_occupied):
+            if (simple_wp[i] & white_occupied).any():
                 simple_wp.remove( simple_wp[i]  )
     else:
         for i in range(len(simple_wp)-1,-1,-1):
-            if any (simple_wp[i] & black_occupied):
+            if (simple_wp[i] & black_occupied).any():
                 simple_wp.remove( simple_wp[i]  )
                 
     return simple_wp

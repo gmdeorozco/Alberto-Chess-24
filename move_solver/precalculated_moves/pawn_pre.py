@@ -29,10 +29,10 @@ def get_white_pawn_attack():
         res_9 |= origin >> 9
         res_9 &= ~column_a
         
-        if any(res_7):
+        if res_7.any():
             result[a].append( res_7 )
         
-        if any(res_9):
+        if res_9.any():
             result[a].append( res_9 )
     return result
 
@@ -64,9 +64,9 @@ def get_black_pawn_attack():
         res_9 |= origin << 9
         res_9 &= ~column_h
         
-        if any(res_7):
+        if res_7.any():
             result[a].append( res_7 )
         
-        if any(res_9):
+        if res_9.any():
             result[a].append( res_9 )
     return result

@@ -1,4 +1,4 @@
-
+from bitarray import bitarray
 
 class game_state():
     def __init__(
@@ -6,6 +6,7 @@ class game_state():
             white_pieces,
             black_pieces,
             turn=True,
+            cells_attacked = bitarray(64),
             white_castling_kingside = True,
             white_castling_queenside = True,
             black_castling_kingside = True,
@@ -17,6 +18,7 @@ class game_state():
         self.white_pieces = white_pieces
         self.black_pieces = black_pieces
         self.turn = turn
+        self.cells_attacked = cells_attacked
         self.white_castling_kingside = white_castling_kingside
         self.white_castling_queenside = white_castling_queenside
         self.black_castling_kingside = black_castling_kingside
