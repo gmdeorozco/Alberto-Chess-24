@@ -1,5 +1,5 @@
 from bitarray import bitarray
-from move_solver.precalculated_moves.utils_precalculated import get_row, is_white
+from move_solver.precalculated_moves.utils_precalculated import  is_white
 
 def get_knight_precalculated():
     result = dict()

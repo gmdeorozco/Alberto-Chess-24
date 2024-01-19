@@ -86,3 +86,4 @@ def print_bits(bits:bitarray,msg=''):
     print_alternating_colors(string[16:24],ConsoleColors.GRAY,ConsoleColors.WHITE)
     print_alternating_colors(string[8:16],ConsoleColors.WHITE,ConsoleColors.GRAY)
     print_alternating_colors(string[0:8],ConsoleColors.GRAY,ConsoleColors.WHITE)
+

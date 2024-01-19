@@ -37,5 +37,5 @@ def get_possible_moves_for_king(origin_bit:bitarray, state:game_state, color:boo
             if (simple_k[i] & black_occupied).any():
                 simple_k.remove( simple_k[i]  )
                 
-    return simple_k & ~ state.cells_attacked
+    return simple_k
     

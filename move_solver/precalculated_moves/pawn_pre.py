@@ -1,5 +1,4 @@
 from bitarray import bitarray
-from move_solver.precalculated_moves.utils_precalculated import get_row, is_white
 from board_cells import column_h, column_a
 
 def get_white_pawn_precalculated():

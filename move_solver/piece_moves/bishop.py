@@ -2,7 +2,7 @@
 from bitarray import bitarray
 from board_printer import print_bits
 from game_state import game_state
-from board_cells import get_col, get_diag
+from board_cells import get_col, get_diag, diagonals
 from move_solver.precalculated_moves import bishop_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy
@@ -73,3 +73,4 @@ def obstacled_diag(friends_occupied_bits, enemy_occupied_bits, origin:bitarray, 
     if (inter_cells & obstacled_cells).any():
         return True
     return False
+

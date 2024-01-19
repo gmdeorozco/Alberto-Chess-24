@@ -12,7 +12,7 @@ simple_white_pawn_attack = pawn_pre.get_white_pawn_attack()
 simple_black_pawn = pawn_pre.get_black_pawn_precalculated()
 simple_black_pawn_attack = pawn_pre.get_black_pawn_attack()
  
-def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state) -> bitarray:
+def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state, color=True) -> list:
     """
     Calculate possible moves for a white pawn based on the origin bitarray and the current board.
 
@@ -40,7 +40,7 @@ def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state) -> 
     
 
 
-def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state) -> bitarray:
+def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state, color=False) -> list:
     """
     Calculate possible moves for a black pawn based on the origin bitarray and the current board.
 

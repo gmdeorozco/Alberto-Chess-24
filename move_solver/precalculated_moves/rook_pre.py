@@ -1,7 +1,6 @@
 from bitarray import bitarray
 from board_cells import column_a, column_h
 from board_printer import print_bits
-from move_solver.precalculated_moves.utils_precalculated import get_row, is_white
 
 def get_rook_precalculated():
     result = dict()

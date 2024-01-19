@@ -1,9 +1,6 @@
 from bitarray import bitarray
 
-def get_row(i):
-    if i==0:
-        return 1
-    return i//8 + 1
+
 
 def is_white( bits ):
     whites = bitarray('0101010110101010010101011010101001010101101010100101010110101010')
