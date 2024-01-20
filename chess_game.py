@@ -34,7 +34,7 @@ def move(state:game_state, origin:bitarray, target:bitarray ):
         enemy = white_occupied
     
 
-    
+    #print_bits(knights,'knights')
     if check(bits = origin, piece_bits = pawns):
         moved, g_state, captured = move_attempt(
             origin=origin,
@@ -54,6 +54,7 @@ def move(state:game_state, origin:bitarray, target:bitarray ):
             return g_state, captured
         
     elif check(bits = origin, piece_bits = knights):
+        #print('found knight')
         moved, g_state, captured = move_attempt(origin=origin,
                      piece_bits=knights,
                      target=target,
@@ -64,6 +65,8 @@ def move(state:game_state, origin:bitarray, target:bitarray ):
         if moved:
             g_state.turn = not g_state.turn
             return g_state, captured
+        else:
+            print('could not move')
     
     elif check(bits = origin, piece_bits = bighops):
         moved, g_state, captured = move_attempt(origin=origin,
@@ -115,6 +118,7 @@ def move(state:game_state, origin:bitarray, target:bitarray ):
     
         
 def move_attempt(
+    
     origin:bitarray, 
     piece_bits:bitarray,
     target:bitarray, 

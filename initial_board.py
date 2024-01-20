@@ -80,3 +80,76 @@ def get_initial_board():
 
     return (the_board)
 
+
+def get_board_1():
+
+    white_pawns = bitarray(64)
+    white_knights = bitarray(64)
+    white_bishops = bitarray(64)
+    white_rooks = bitarray(64)
+    white_queens = bitarray(64)
+    white_king = bitarray(64)
+    black_pawns = bitarray(64)
+    black_knights = bitarray(64)
+    black_bishops = bitarray(64)
+    black_rooks = bitarray(64)
+    black_queens = bitarray(64)
+    black_king = bitarray(64)
+    
+    white_pawns[12] = True
+    white_pawns[15] = True
+    white_pawns[27] = True
+    
+    black_pawns[36] = True
+    black_pawns[45] = True
+    black_pawns[48] = True
+    
+
+    white_pawn_pieces = piece(bits = white_pawns, type='pawn' )
+    white_knights_pieces = piece(bits = white_knights, type='knight' )
+    white_bishops_pieces = piece(bits = white_bishops, type='bishop' )
+    white_rooks_pieces = piece(bits = white_rooks, type='rook' )
+    white_queens_pieces = piece(bits = white_queens, type='queen' )
+    white_king_pieces = piece(bits = white_king, type='king' )
+    white_pieces = [
+        white_pawn_pieces,
+        white_knights_pieces,
+        white_bishops_pieces,
+        white_rooks_pieces,
+        white_queens_pieces,
+        white_king_pieces]
+    
+    black_pawn_pieces = piece(bits =  black_pawns, type='pawn',color=False )
+    black_knights_pieces = piece(bits = black_knights, type='knight',color=False )
+    black_bishops_pieces = piece(bits = black_bishops, type='bishop',color=False )
+    black_rooks_pieces = piece(bits = black_rooks, type='rook',color=False )
+    black_queens_pieces = piece(bits = black_queens, type='queen',color=False )
+    black_king_pieces = piece(bits = black_king, type='king',color=False )
+    black_pieces = [
+        black_pawn_pieces,
+        black_knights_pieces,
+        black_bishops_pieces,
+        black_rooks_pieces,
+        black_queens_pieces,
+        black_king_pieces]
+    
+    the_board = game_state(
+        white_pieces=white_pieces, 
+        black_pieces=black_pieces, 
+        turn=True, 
+        white_castling_kingside=True, 
+        white_castling_queenside=True,
+        black_castling_kingside = True,
+        black_queenside_kingside = True,
+        en_passant_target = bitarray(64),
+        half_moves = 0,
+        full_moves = 0,
+        )
+
+    return (the_board)
+
+def get_board_2():
+    the_board = get_board_1()
+    the_board.white_pieces[3].bits[5]=True
+    the_board.black_pieces[3].bits[60]=True
+    return the_board

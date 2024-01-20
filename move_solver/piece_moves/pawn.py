@@ -36,6 +36,11 @@ def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state, col
             ):
             simple_wp.remove( simple_wp[i]  )
     
+    attacked = simple_white_pawn_attack[index]
+    for attacked_bit in attacked:
+        if attacked_bit & black_occupied == attacked_bit:
+            simple_wp.append(attacked_bit)
+    
     return simple_wp
     
 
@@ -64,6 +69,11 @@ def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state, col
             ):
             simple_wp.remove( simple_wp[i]  )
     
+    attacked = simple_black_pawn_attack[index]
+    for attacked_bit in attacked:
+        if attacked_bit & white_occupied == attacked_bit:
+            simple_wp.append(attacked_bit)
+            
     return simple_wp
     
     
