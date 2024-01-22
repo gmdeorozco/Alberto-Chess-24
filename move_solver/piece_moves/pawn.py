@@ -63,6 +63,7 @@ def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state, col
     index = origin_bit.index(True)
     simple_wp = copy.deepcopy(simple_black_pawn[ index ])
     for i in range(len(simple_wp)-1,-1,-1):
+        
         if (
             (simple_wp[i] & all_occupied).any()
             | obstacled_col(black_occupied, white_occupied, origin_bit, simple_wp[i],color=False )

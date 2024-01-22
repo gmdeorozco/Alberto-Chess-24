@@ -8,6 +8,7 @@ from move_solver.piece_moves.rook import get_possible_moves_for_rook
 from move_solver.piece_moves.queen import get_possible_moves_for_queen
 from move_solver.piece_moves.king import get_possible_moves_for_king
 from move_solver.precalculated_moves.utils_precalculated import occupied
+from board_cells import row_1, row_8
 
 def move(state:game_state, origin:bitarray, target:bitarray ):
     white_pieces = state.white_pieces
@@ -136,6 +137,19 @@ def move_attempt(
             if target & enemy == target:
                 captured = True
             remove(target,state)
+            
+            white_crown = state.white_pieces[0].bits & row_8
+            if white_crown.any():
+                index = white_crown.index(True)
+                state.white_pieces[0].bits[index]=False
+                state.white_pieces[4].bits[index]=True
+            
+            black_crown = state.black_pieces[0].bits & row_1
+            if black_crown.any():
+                index = black_crown.index(True)
+                state.black_pieces[0].bits[index]=False
+                state.black_pieces[4].bits[index]=True
+                
             return True, state, captured
     return False
     

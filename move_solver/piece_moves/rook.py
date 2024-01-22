@@ -37,14 +37,20 @@ def get_possible_moves_for_rook(origin_bit:bitarray, state:game_state,color:bool
     
     simple_r = copy.deepcopy(simple_rook[ index ])
     for i in range(len(simple_r)-1,-1,-1):
-        if (
-            (simple_r[i] & friends).any()
-            | ( 
-               obstacled_col(friends, enemy, origin_bit, simple_r[i], color=color )
-               & obstacled_row(friends, enemy, origin_bit, simple_r[i], color=color )
-            )
-            ):
-            simple_r.remove( simple_r[i]  )
+        ind, col_target = get_col(simple_r[i])
+        ind, row_target = get_row(simple_r[i])
+        
+        if (simple_r[i] & friends).any():
+            simple_r.remove(simple_r[i])
+        else:
+        
+            if col_target & origin_bit == origin_bit:
+                if  obstacled_col(friends, enemy, origin_bit, simple_r[i], color=color):
+                    simple_r.remove( simple_r[i]  )
+            
+            if row_target & origin_bit == origin_bit:
+                if obstacled_row(friends, enemy, origin_bit, simple_r[i], color=color ):
+                    simple_r.remove( simple_r[i]  )
     
     return simple_r
     
@@ -53,6 +59,7 @@ def obstacled_col(friends_occupied_bits, enemy_occupied_bits, origin:bitarray, t
 
     obstacled_cells = friends_occupied_bits | enemy_occupied_bits
     result = get_col(origin | target)
+    
     if result is not None:
         ind_col, col = result
         # Now you can safely use ind_col and col

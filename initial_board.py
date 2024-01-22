@@ -99,10 +99,11 @@ def get_board_1():
     white_pawns[12] = True
     white_pawns[15] = True
     white_pawns[27] = True
+    white_pawns[48] = True
     
     black_pawns[36] = True
     black_pawns[45] = True
-    black_pawns[48] = True
+    black_pawns[8] = True
     
 
     white_pawn_pieces = piece(bits = white_pawns, type='pawn' )

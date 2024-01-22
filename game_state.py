@@ -5,8 +5,8 @@ from move_solver.precalculated_moves.utils_precalculated import occupied
 class game_state():
     def __init__(
             self,
-            white_pieces:list,
-            black_pieces:list,
+            white_pieces:None,
+            black_pieces:None,
             turn=True,
             white_castling_kingside = True,
             white_castling_queenside = True,
@@ -16,8 +16,16 @@ class game_state():
             half_moves = 0,
             full_moves = 0,
             ):
-        self.white_pieces = white_pieces
-        self.black_pieces = black_pieces
+        if white_pieces is None:
+            self.white_pieces = list()
+        else:
+            self.white_pieces = white_pieces
+        
+        if black_pieces is None:
+            self.black_pieces = list()
+        else:
+            self.black_pieces = black_pieces
+        
         self.turn = turn
         self.white_castling_kingside = white_castling_kingside
         self.white_castling_queenside = white_castling_queenside

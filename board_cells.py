@@ -135,12 +135,17 @@ def get_diag(bits:bitarray):
     #print(diagonals)
     return diagonals[index]
 
-center_1 = (column_d | column_e) & (row_4 | row_5)
-
-border_2 = (column_b | column_g | row_2 | row_7 ) &~ center_1
+center_1 = ( cells['D4'] | cells['D5'] | cells['E4'] | cells['E5']  | cells['C4'] | cells['F4']
+    | cells['C5'] | cells['F5'])
 border_1 = column_a | column_h | row_1 | row_8
+
+border_2 = (column_b | column_g | row_2 | row_7 ) &~ center_1  &~ border_1 
 
 full = bitarray(64)
 full.setall(True)
 
-center_2 = full &~ (border_1  | border_2 | center_1)
+center_2 = (
+    cells['C3'] | cells['D3'] | cells['E3'] | cells['F3']
+    
+    | cells['C6'] | cells['D6'] | cells['E6'] | cells['F6']
+            )

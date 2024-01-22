@@ -8,7 +8,7 @@ import copy
 
 simple_knight = knight_pre.get_knight_precalculated()
  
-def get_possible_moves_for_knight(origin_bit:bitarray, state:game_state, color:bool) -> bitarray:
+def get_possible_moves_for_knight(origin_bit:bitarray, state:game_state, color:bool) -> list:
     """
     Calculate possible moves for a knight based on the origin bitarray and the current board.
 

@@ -37,16 +37,23 @@ def get_possible_moves_for_bishop(origin_bit:bitarray, state:game_state,color:bo
     
     simple_b = copy.deepcopy(simple_bishop[ index ])
     diagonals = get_diag(origin_bit)
+    
     for i in range(len(simple_b)-1,-1,-1):
+        if simple_b[i] & diagonals [0] == simple_b[i]:
+            relevant_diagonal = diagonals[0]
+            
+        if simple_b[i] & diagonals [1] == simple_b[i]:
+            relevant_diagonal = diagonals[1]
+            
         if (
                 (simple_b[i] & friends).any() or  
                 ( 
-                    obstacled_diag(friends, enemy, origin_bit, simple_b[i], diagonals[0], color=color )
-                    or 
-                    obstacled_diag(friends, enemy, origin_bit, simple_b[i], diagonals[1], color=color )
+                    obstacled_diag(friends, enemy, origin_bit, simple_b[i], relevant_diagonal, color=color )
+                    
                 )
             
             ):
+           
             simple_b.remove( simple_b[i]  )
     
     return simple_b
@@ -63,13 +70,16 @@ def obstacled_diag(friends_occupied_bits, enemy_occupied_bits, origin:bitarray, 
     target_index = target.index(True)
     
     if origin_index < target_index:
-        for i in range( origin.index( True ) + 1, target.index( True ) ):
+        for i in range( origin_index + 1, target_index ):
             inter_cells[i]=True
     else:
         for i in range( target.index( True ) + 1 ,origin.index( True )  ):
             inter_cells[i]=True
     
+    
     inter_cells &= diagonal
+    
+        
     if (inter_cells & obstacled_cells).any():
         return True
     return False
