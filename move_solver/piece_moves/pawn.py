@@ -1,7 +1,7 @@
 
 from bitarray import bitarray
 from board_printer import print_bits
-from game_state import game_state
+from game_state import GameState
 from board_cells import get_col
 from move_solver.precalculated_moves import pawn_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
@@ -12,7 +12,7 @@ simple_white_pawn_attack = pawn_pre.get_white_pawn_attack()
 simple_black_pawn = pawn_pre.get_black_pawn_precalculated()
 simple_black_pawn_attack = pawn_pre.get_black_pawn_attack()
  
-def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state, color=True) -> list:
+def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:GameState, color=True) -> list:
     """
     Calculate possible moves for a white pawn based on the origin bitarray and the current board.
 
@@ -36,11 +36,16 @@ def get_possible_moves_for_white_pawn(origin_bit:bitarray, state:game_state, col
             ):
             simple_wp.remove( simple_wp[i]  )
     
+    attacked = simple_white_pawn_attack[index]
+    for attacked_bit in attacked:
+        if attacked_bit & black_occupied == attacked_bit:
+            simple_wp.append(attacked_bit)
+    
     return simple_wp
     
 
 
-def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state, color=False) -> list:
+def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:GameState, color=False) -> list:
     """
     Calculate possible moves for a black pawn based on the origin bitarray and the current board.
 
@@ -58,12 +63,18 @@ def get_possible_moves_for_black_pawn(origin_bit:bitarray, state:game_state, col
     index = origin_bit.index(True)
     simple_wp = copy.deepcopy(simple_black_pawn[ index ])
     for i in range(len(simple_wp)-1,-1,-1):
+        
         if (
             (simple_wp[i] & all_occupied).any()
             | obstacled_col(black_occupied, white_occupied, origin_bit, simple_wp[i],color=False )
             ):
             simple_wp.remove( simple_wp[i]  )
     
+    attacked = simple_black_pawn_attack[index]
+    for attacked_bit in attacked:
+        if attacked_bit & white_occupied == attacked_bit:
+            simple_wp.append(attacked_bit)
+            
     return simple_wp
     
     

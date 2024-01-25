@@ -35,6 +35,7 @@ def get_white_pawn_attack():
             result[a].append( res_9 )
     return result
 
+
 def get_black_pawn_precalculated():
     result = dict()
     for a in range(56):

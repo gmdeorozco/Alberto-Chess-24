@@ -1,0 +1,5 @@
+2bqkbr1/r6p/2p1p3/1p2nppP/p1pP4/1PN1PN2/P1QKBPP1/R2n2R1 w - - 2 25
+Error: no puedo comer el caballo en d1 con torre en g1
+Task: Corregido rook_precalculated por en lugar de sub1 recursionar a si mismo llamaba a add1
+SOLVED ✔️
+

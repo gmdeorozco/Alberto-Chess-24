@@ -1,15 +1,15 @@
 
 from bitarray import bitarray
 from board_printer import print_bits
-from game_state import game_state
-from board_cells import get_col
+from game_state import GameState
+from board_cells import get_col, cells
 from move_solver.precalculated_moves import king_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy
 
 simple_king = king_pre.get_king_precalculated()
  
-def get_possible_moves_for_king(origin_bit:bitarray, state:game_state, color:bool) -> bitarray:
+def get_possible_moves_for_king(origin_bit:bitarray, state:GameState, color:bool) -> bitarray:
     """
     Calculate possible moves for a King based on the origin bitarray and the current board.
 
@@ -32,10 +32,29 @@ def get_possible_moves_for_king(origin_bit:bitarray, state:game_state, color:boo
         for i in range(len(simple_k)-1,-1,-1):
             if (simple_k[i] & white_occupied).any():
                 simple_k.remove( simple_k[i]  )
+        
+        if index == 4:
+            cells_between_castle_kingside = cells['F1'] | cells['G1']
+            if not (cells_between_castle_kingside & all_occupied).any() and state.white_castling_kingside:
+                simple_k.append(cells['G1'])    
+        
+            cells_between_castle_queenside = cells['B1'] | cells['C1'] | cells['D1']
+            if not (cells_between_castle_queenside & all_occupied).any() and state.white_castling_queenside:
+                simple_k.append(cells['C1'])    
+            
     else:
         for i in range(len(simple_k)-1,-1,-1):
             if (simple_k[i] & black_occupied).any():
                 simple_k.remove( simple_k[i]  )
+        
+        if index == 60:
+            cells_between_castle_kingside = cells['F8'] | cells['G8']
+            if not (cells_between_castle_kingside & all_occupied).any() and state.black_castling_kingside:
+                simple_k.append(cells['G8'])    
+        
+            cells_between_castle_queenside = cells['B8'] | cells['C8'] | cells['D8']
+            if not (cells_between_castle_queenside & all_occupied).any() and state.black_castling_queenside:
+                simple_k.append(cells['C8'])
                 
     return simple_k
     

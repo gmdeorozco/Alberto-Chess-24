@@ -1,14 +1,14 @@
 
 from bitarray import bitarray
 from board_printer import print_bits
-from game_state import game_state
+from game_state import GameState
 from board_cells import get_col, get_diag
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 from move_solver.piece_moves.rook import get_possible_moves_for_rook
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy
  
-def get_possible_moves_for_queen(origin_bit:bitarray, state:game_state,color:bool) -> bitarray:
+def get_possible_moves_for_queen(origin_bit:bitarray, state:GameState,color:bool) -> bitarray:
     """
     Calculate possible moves for a Chess Queen based on the origin bitarray and the current board.
 
