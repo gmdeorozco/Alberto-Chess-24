@@ -36,7 +36,7 @@ def sub_1_to_row(origin:bitarray, lst:list ):
         return
     if minus.any():
         lst.append(minus)
-        add_1_to_row(minus, lst)
+        sub_1_to_row(minus, lst)
 
 def sub_8_to_row(origin:bitarray, lst:list ):
     minus = origin << 8

@@ -1,5 +1,4 @@
 from bitarray import bitarray
-from move_solver.precalculated_moves.utils_precalculated import  is_white
 from board_cells import column_a, column_h
 
 def get_king_precalculated():
@@ -28,13 +27,13 @@ def get_king_precalculated():
             result[a].append(minus8)
 
         plus9 = origin >> 9
+        plus9 &= ~column_a 
         if plus9.any():
-            plus9 &= ~column_a 
             result[a].append( plus9 )
         
         minus9 = origin << 9
+        minus9 &= ~column_h
         if minus9.any():
-            minus9 &= ~column_h
             result[a].append(minus9)
 
         plus7 = origin >> 7
@@ -43,7 +42,8 @@ def get_king_precalculated():
             result[a].append(plus7)
         
         minus7 = origin << 7
-        minus7 &= column_a
+        minus7 &= ~column_a
         if minus7.any():
             result[a].append(minus7)
     return result
+

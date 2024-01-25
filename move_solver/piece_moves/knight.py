@@ -1,14 +1,14 @@
 
 from bitarray import bitarray
 from board_printer import print_bits
-from game_state import game_state
+from game_state import GameState
 from move_solver.precalculated_moves import knight_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy
 
 simple_knight = knight_pre.get_knight_precalculated()
  
-def get_possible_moves_for_knight(origin_bit:bitarray, state:game_state, color:bool) -> list:
+def get_possible_moves_for_knight(origin_bit:bitarray, state:GameState, color:bool) -> list:
     """
     Calculate possible moves for a knight based on the origin bitarray and the current board.
 

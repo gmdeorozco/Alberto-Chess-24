@@ -1,11 +1,15 @@
 from bitarray import bitarray
 
+
 class AnalysisNode:
+    all_nodes = {}  # Dictionary to store instances based on depth
+    
     def __init__(self, 
                  origin, target, 
                  parent_node:'AnalysisNode' = None, 
                  value:float=0.0, color = True, 
-                 depth=0, open=True, children:list=None, first_chance_done=False) -> None:
+                 depth=0, open=True, children:list=None, first_chance_done=False
+                 , best_child = None, name=None) -> None:
         
         self.origin = origin
         self.target = target
@@ -16,17 +20,15 @@ class AnalysisNode:
         self.open = open
         self.children = children if children is not None else []
         self.first_chance_done = first_chance_done
-    
-    def parent_up(self, children_value):
-        if self.color:
-            if children_value < self.value:
-                self.value = children_value
-                return True
+        self.best_child = best_child
+        self.name = name
+        
+         # Add the instance to the dictionary based on depth
+        if depth in AnalysisNode.all_nodes:
+            AnalysisNode.all_nodes[depth].append(self)
         else:
-            if children_value > self.value:
-                self.value = children_value
-                return True
-        return False
+            AnalysisNode.all_nodes[depth] = [self]
+ 
                 
     def __eq__(self, other):
         # Define the equality comparison logic based on your attributes

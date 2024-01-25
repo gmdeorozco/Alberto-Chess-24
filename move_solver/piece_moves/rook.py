@@ -1,7 +1,7 @@
 
 from bitarray import bitarray
 from board_printer import print_bits
-from game_state import game_state
+from game_state import GameState
 from board_cells import get_col, get_row
 from move_solver.precalculated_moves import rook_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
@@ -9,7 +9,7 @@ import copy
 
 simple_rook = rook_pre.get_rook_precalculated()
  
-def get_possible_moves_for_rook(origin_bit:bitarray, state:game_state,color:bool) -> bitarray:
+def get_possible_moves_for_rook(origin_bit:bitarray, state:GameState,color:bool) -> bitarray:
     """
     Calculate possible moves for a Chess Rook based on the origin bitarray and the current board.
 

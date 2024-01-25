@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw
 from bitarray import bitarray
 import tkinter as tk
 from tkinter import PhotoImage
-from game_state import game_state
+from game_state import GameState
 from board_cells import get_row, get_col
 from initial_board import get_initial_board
 from PIL import ImageTk
@@ -105,7 +105,7 @@ def place_group( piece_group,img,chessboard_image ):
     chessboard_image.show()
 '''
 
-def state_to_img(state: game_state, window):
+def state_to_img(state: GameState, window):
     # Clear the previous content of the window
     for widget in window.winfo_children():
         widget.destroy()

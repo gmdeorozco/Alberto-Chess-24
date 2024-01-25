@@ -1,8 +1,8 @@
-from game_state import game_state
+from game_state import GameState
 from bitarray import bitarray
-from piece import piece
+from piece import Piece
 
-def print_board(board:game_state):
+def print_board(board:GameState):
     board = str_board(board)
 
     print(board[56:64])
@@ -14,7 +14,7 @@ def print_board(board:game_state):
     print(board[8:16])
     print(board[0:8])
 
-def str_board( board:game_state ):
+def str_board( board:GameState ):
     result_str = '................................................................'
     
     for piece in board.white_pieces:
@@ -30,14 +30,14 @@ def str_board( board:game_state ):
 
     return str_result
 
-def convert_str(piece:piece, result_str:str) -> str:
+def convert_str(piece:Piece, result_str:str) -> str:
     
     for index, bit in enumerate(piece.bits):
         if bit==True:
             result_str = replace_char_at_position(result_str,index,get_char(piece))
     return result_str
 
-def get_char( piece:piece ) -> str:
+def get_char( piece:Piece ) -> str:
     if piece.color:
         if piece.type == 'pawn':  return 'P'
         if piece.type == 'knight':  return 'N'

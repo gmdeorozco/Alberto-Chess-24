@@ -1,5 +1,5 @@
 from bitarray import bitarray 
-from game_state import game_state
+from game_state import GameState
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 from move_solver.piece_moves.king import get_possible_moves_for_king
 from move_solver.piece_moves.knight import get_possible_moves_for_knight
@@ -8,7 +8,7 @@ from move_solver.piece_moves.queen import get_possible_moves_for_queen
 from move_solver.piece_moves.rook import get_possible_moves_for_rook
 
 
-def get_all_possible_pair_moves(state:game_state):
+def get_all_possible_pair_moves(state:GameState):
     all_moves = list()
     if state.turn:
         # White Pieces
