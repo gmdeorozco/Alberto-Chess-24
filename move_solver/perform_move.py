@@ -1,7 +1,7 @@
 import copy
-from game_state import GameState
+from game_state.game_state import GameState
 from bitarray import bitarray
-from board_printer import print_bits, print_board
+from board_representation.board_printer import print_bits, print_board
 from move_solver.piece_moves.pawn import get_possible_moves_for_white_pawn, get_possible_moves_for_black_pawn
 from move_solver.piece_moves.knight import get_possible_moves_for_knight
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
@@ -9,7 +9,7 @@ from move_solver.piece_moves.rook import get_possible_moves_for_rook
 from move_solver.piece_moves.queen import get_possible_moves_for_queen
 from move_solver.piece_moves.king import get_possible_moves_for_king
 from move_solver.precalculated_moves.utils_precalculated import occupied
-from board_cells import row_1, row_8, cells
+from board_representation.board_cells import row_1, row_8, cells
 
 def move(state:GameState, origin:bitarray, target:bitarray ):
     white_pieces = state.white_pieces

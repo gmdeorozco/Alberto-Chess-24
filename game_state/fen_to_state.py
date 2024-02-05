@@ -1,10 +1,10 @@
 
 #2bqk2r/r1p1b2p/2n1pp1n/1p1p2pP/p1PP4/1PN1PN2/PBQ1BPP1/R4K1R w k g6 0 13
 from bitarray import bitarray
-from board_printer import print_board
-from game_state import GameState
-from board_cells import cells
-from piece import Piece
+from board_representation.board_printer import print_board
+from game_state.game_state import GameState
+from board_representation.board_cells import cells
+from board_representation.piece import Piece
 
 def fen_to_state(fen_position:str):
     state = GameState()

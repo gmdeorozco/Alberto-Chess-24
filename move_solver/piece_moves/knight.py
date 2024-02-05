@@ -1,7 +1,7 @@
 
 from bitarray import bitarray
-from board_printer import print_bits
-from game_state import GameState
+from board_representation.board_printer import print_bits
+from game_state.game_state import GameState
 from move_solver.precalculated_moves import knight_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy

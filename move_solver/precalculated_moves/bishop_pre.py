@@ -1,7 +1,7 @@
 
 from bitarray import bitarray
-from board_printer import print_bits
-from board_cells import column_a, column_h, add_9_to_diagonal, add_7_to_diagonal, sub_7_to_diagonal, sub_9_to_diagonal
+from board_representation.board_printer import print_bits
+from board_representation.board_cells import column_a, column_h, add_9_to_diagonal, add_7_to_diagonal, sub_7_to_diagonal, sub_9_to_diagonal
 
 
 def get_bishop_precalculated():

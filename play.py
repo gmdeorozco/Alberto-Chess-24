@@ -2,13 +2,13 @@ import tkinter as tk
 from PIL import ImageTk
 from bitarray import bitarray
 from alberto_engine.alberto_engine import Alberto_Engine
-from board_printer import print_bits, print_board
-from fen_to_state import fen_to_state
-from game_state import GameState
-from initial_board import get_initial_board, get_board_1, get_board_2
-from chessboard_2 import state_to_img
-from chess_game import move
-from board_cells import cells, get_diag
+from board_representation.board_printer import print_bits, print_board
+from game_state.fen_to_state import fen_to_state
+from game_state.game_state import GameState
+from board_representation.initial_board import get_initial_board, get_board_1, get_board_2
+from board_representation.chessboard import state_to_img
+from move_solver.perform_move import move
+from board_representation.board_cells import cells, get_diag
 import time
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 

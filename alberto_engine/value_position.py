@@ -1,12 +1,13 @@
 from bitarray import bitarray
-from game_state import GameState
+from game_state.game_state import GameState
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 from move_solver.piece_moves.knight import get_possible_moves_for_knight
 from move_solver.piece_moves.queen import get_possible_moves_for_queen
-from move_solver.piece_moves.rook import get_possible_moves_for_rook
+from move_solver.piece_moves.rook import get_possible_moves_for_rook 
+from move_solver.piece_moves.pawn import get_possible_moves_for_black_pawn, get_possible_moves_for_white_pawn
 from move_solver.precalculated_moves.pawn_pre import get_black_pawn_attack, get_white_pawn_attack
 from move_solver.precalculated_moves.utils_precalculated import occupied
-from board_cells import center_1, center_2, border_2
+from board_representation.board_cells import center_1, center_2, border_2
 
 def value_position( state:GameState):
         value=0.0
@@ -31,6 +32,7 @@ def value_position( state:GameState):
         
         w_pawn_bits = white_pieces[0].bits
         value += center_value( w_pawn_bits, True)
+        value += space_value(w_pawn_bits,get_possible_moves_for_white_pawn,state,True)
         
         w_knight_bits = white_pieces[1].bits
         value += space_value(w_knight_bits,get_possible_moves_for_knight,state,True)
@@ -52,6 +54,7 @@ def value_position( state:GameState):
         # Black Space
         b_pawn_bits = black_pieces[0].bits
         value -= center_value( b_pawn_bits, False)
+        value -= space_value(w_pawn_bits,get_possible_moves_for_black_pawn,state,False)
         
         b_knight_bits = black_pieces[1].bits
         value -= space_value(b_knight_bits,get_possible_moves_for_knight,state,False)

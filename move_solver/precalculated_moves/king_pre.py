@@ -1,5 +1,5 @@
 from bitarray import bitarray
-from board_cells import column_a, column_h
+from board_representation.board_cells import column_a, column_h
 
 def get_king_precalculated():
     result = dict()
