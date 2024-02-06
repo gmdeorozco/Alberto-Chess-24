@@ -1,8 +1,8 @@
 from alberto_engine.engine_logger import append_to_logs
 from alberto_engine.get_moves_out_of_node import get_the_moves_out_of_node
 from alberto_engine.value_position import value_position
-from chess_game import move
-from game_state import GameState
+from move_solver.perform_move import move
+from game_state.game_state import GameState
 from alberto_engine.analisys_node import AnalysisNode
 import copy
 from move_solver.piece_moves.all_pieces import get_all_possible_pair_moves

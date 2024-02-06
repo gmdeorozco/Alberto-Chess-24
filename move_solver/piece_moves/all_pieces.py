@@ -1,5 +1,5 @@
 from bitarray import bitarray 
-from game_state import GameState
+from game_state.game_state import GameState
 from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 from move_solver.piece_moves.king import get_possible_moves_for_king
 from move_solver.piece_moves.knight import get_possible_moves_for_knight

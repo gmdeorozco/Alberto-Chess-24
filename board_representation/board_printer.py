@@ -1,6 +1,6 @@
-from game_state import GameState
+from game_state.game_state import GameState
 from bitarray import bitarray
-from piece import Piece
+from board_representation.piece import Piece
 
 def print_board(board:GameState):
     board = str_board(board)

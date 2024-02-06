@@ -2,8 +2,8 @@ from bitarray import bitarray
 from alberto_engine.engine_logger import append_to_logs, empty_logs
 from alberto_engine.get_moves_out_of_node import get_the_moves_out_of_node
 from alberto_engine.value_position import value_position
-from board_printer import print_bits, print_board
-from initial_board import get_initial_board
+from board_representation.board_printer import print_bits, print_board
+from board_representation.initial_board import get_initial_board
 from move_solver.piece_moves.pawn import get_possible_moves_for_white_pawn, get_possible_moves_for_black_pawn
 from move_solver.piece_moves.knight import get_possible_moves_for_knight
 from move_solver.piece_moves.rook import get_possible_moves_for_rook
@@ -11,9 +11,9 @@ from move_solver.piece_moves.bishop import get_possible_moves_for_bishop
 from move_solver.piece_moves.queen import get_possible_moves_for_queen
 from move_solver.piece_moves.king import get_possible_moves_for_king
 from move_solver.piece_moves.all_pieces import get_all_possible_pair_moves
-from board_cells import center_1, center_2, border_1, border_2, cells
-from chess_game import move
-from game_state import GameState
+from board_representation.board_cells import center_1, center_2, border_1, border_2, cells
+from move_solver.perform_move import move
+from game_state.game_state import GameState
 from alberto_engine.analisys_node import AnalysisNode
 import time
 import copy

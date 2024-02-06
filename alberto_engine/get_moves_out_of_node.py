@@ -1,6 +1,6 @@
 from bitarray import bitarray
 from alberto_engine.analisys_node import AnalysisNode
-from board_cells import cells
+from board_representation.board_cells import cells
 
 
 def get_the_moves_out_of_node( node:AnalysisNode):

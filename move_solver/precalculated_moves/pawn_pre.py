@@ -1,5 +1,5 @@
 from bitarray import bitarray
-from board_cells import column_h, column_a
+from board_representation.board_cells import column_h, column_a
 
 def get_white_pawn_precalculated():
     result = dict()

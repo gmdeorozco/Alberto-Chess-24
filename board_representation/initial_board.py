@@ -1,6 +1,6 @@
 from bitarray import bitarray
-from game_state import GameState
-from piece import Piece
+from game_state.game_state import GameState
+from board_representation.piece import Piece
 
 def get_initial_board():
 

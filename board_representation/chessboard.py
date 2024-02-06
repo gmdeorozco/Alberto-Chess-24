@@ -2,9 +2,9 @@ from PIL import Image, ImageDraw
 from bitarray import bitarray
 import tkinter as tk
 from tkinter import PhotoImage
-from game_state import GameState
-from board_cells import get_row, get_col
-from initial_board import get_initial_board
+from game_state.game_state import GameState
+from board_representation.board_cells import get_row, get_col
+from board_representation.initial_board import get_initial_board
 from PIL import ImageTk
 
 def create_chessboard():

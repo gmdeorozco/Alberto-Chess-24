@@ -1,6 +1,6 @@
 from bitarray import bitarray
-from board_cells import column_a, column_h
-from board_printer import print_bits
+from board_representation.board_cells import column_a, column_h
+from board_representation.board_printer import print_bits
 
 def get_rook_precalculated():
     result = dict()

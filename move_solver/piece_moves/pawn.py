@@ -1,8 +1,8 @@
 
 from bitarray import bitarray
-from board_printer import print_bits
-from game_state import GameState
-from board_cells import get_col
+from board_representation.board_printer import print_bits
+from game_state.game_state import GameState
+from board_representation.board_cells import get_col
 from move_solver.precalculated_moves import pawn_pre
 from move_solver.precalculated_moves.utils_precalculated import occupied
 import copy
